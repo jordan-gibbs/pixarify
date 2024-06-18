@@ -103,7 +103,7 @@ if uploaded_file is not None:
                             "style_name": "(No style)",
                             "input_image": uploaded_file,
                             "num_outputs": 1,
-                            "guidance_scale": 3,
+                            "guidance_scale": 5,
                             "negative_prompt": "realistic, photo-realistic, worst quality, greyscale, bad anatomy, bad hands, error, text",
                             "style_strength_ratio": 35
                         }
