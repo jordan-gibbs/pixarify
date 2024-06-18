@@ -26,7 +26,7 @@ def get_image_description(encoded_image, api_key):
                 "content": [
                     {
                         "type": "text",
-                        "text": "Describe this person in the image, their age, gender, hair color, facial expression, estimated race, ethnicity, and other characteristics, ie facial hair, glasses, piercings, clothing, and overall mood and setting of the picture. Here is an example output for you: young man, neutral face, light beard, glasses, black hair, asian, warehouse, dark\n Here is another example for you: young girl, anxious face, glasses, blonde hair, caucasian, city street, daytime"
+                        "text": "Describe this person in the image, their age, gender, hair color, facial expression, ethnicity, and other characteristics, ie facial hair, glasses, or piercings. Here is an example output for you: young man, neutral face, light beard, glasses, black hair, asian\n Here is another example for you: young girl, anxious face, glasses, blonde hair, caucasian\nbe EXTREMELY concise."
                     },
                     {
                         "type": "image_url",
