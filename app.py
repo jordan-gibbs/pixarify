@@ -26,7 +26,7 @@ def get_image_description(encoded_image, api_key):
                 "content": [
                     {
                         "type": "text",
-                        "text": "Describe this person in the image, their age, gender, hair color, facial expression, and other characteristics, ie facial hair, glasses, or piercings. Always add 'img' after the first descriptor, i.e. 'man img' or 'girl img'. Here is an example output for you: young man img, neutral face, light beard, glasses, black hair\n Here is another example for you: young girl img, anxious face, glasses, blonde hair\nbe EXTREMELY concise."
+                        "text": "Describe this person in the image, their age, gender, hair color, facial expression, and other characteristics, ie facial hair, glasses, or piercings. Also specify the vibe of the photo and the setting using the same brief format. Don't output any other punctuation other than commas. Here is an example output for you: young man, neutral face, light beard, glasses, black hair, warehouse, dark, black and white\n Here is another example for you: young girl, smiling face, glasses, blonde hair, colorful background, happy mood\nbe EXTREMELY concise."
                     },
                     {
                         "type": "image_url",
@@ -98,7 +98,7 @@ if uploaded_file is not None:
                     output = rep_client.run(
                         "tencentarc/photomaker-style:467d062309da518648ba89d226490e02b8ed09b5abc15026e54e31c5a8cd0769",
                         input={
-                            "prompt": f"a Pixar character, {description}, 3d CGI, art by Pixar, half-body, screenshot from animation",
+                            "prompt": f"a Pixar character, {description} img, 3d CGI, art by Pixar, half-body, screenshot from animation",
                             "num_steps": 75,
                             "style_name": "(No style)",
                             "input_image": uploaded_file,
