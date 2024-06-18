@@ -26,7 +26,7 @@ def get_image_description(encoded_image, api_key):
                 "content": [
                     {
                         "type": "text",
-                        "text": "Describe this person in the image, their age, gender, hair color, facial expression, estimated race, ethnicity, and other characteristics, ie facial hair, glasses, piercings, clothing, and overall mood and setting of the picture. Here is an example output for you: young man, neutral face, light beard, glasses, black hair, asian, warehouse, dark\n Here is another example for you: young girl, anxious face, glasses, blonde hair, caucasian, city street, daytime"
+                        "text": "Describe this person in the image, their age, gender, hair color, facial expression, estimated race, ethnicity, and other characteristics, ie facial hair, glasses, piercings, clothing, and overall mood and setting of the picture. Here is an example output for you: young man, neutral face, light beard, glasses, black hair, asian, warehouse, dark\n Here is another example for you: young girl, anxious face, glasses, blonde hair, caucasian, city street, daytime\nDont be afraid to be quite detailed."
                     },
                     {
                         "type": "image_url",
@@ -75,7 +75,7 @@ if uploaded_file is not None:
             result = get_image_description(encoded_image, api_key)
             if result and "choices" in result and len(result["choices"]) > 0:
                 description = result["choices"][0]["message"]["content"]
-                # st.write(f"Description: {description}")
+                st.write(f"Description: {description}")
 
                 try:
                     # Generate Pixar-style image using Replicate API
