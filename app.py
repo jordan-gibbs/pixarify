@@ -95,19 +95,19 @@ if uploaded_file is not None:
                     #     }
                     # )
 
-                        output = rep_client.run(
-                            "tencentarc/photomaker-style:467d062309da518648ba89d226490e02b8ed09b5abc15026e54e31c5a8cd0769",
-                            input={
-                                "prompt": "A portrait of a {description} img, 3d CGI, art by Pixar, half-body, screenshot from animation",
-                                "num_steps": 50,
-                                "style_name": "(No style)",
-                                "input_image": uploaded_file,
-                                "num_outputs": 1,
-                                "guidance_scale": 5,
-                                "negative_prompt": "realistic, photo-realistic, worst quality, greyscale, bad anatomy, bad hands, error, text",
-                                "style_strength_ratio": 35
-                            }
-                        )
+                    output = rep_client.run(
+                        "tencentarc/photomaker-style:467d062309da518648ba89d226490e02b8ed09b5abc15026e54e31c5a8cd0769",
+                        input={
+                            "prompt": "A portrait of a {description} img, 3d CGI, art by Pixar, half-body, screenshot from animation",
+                            "num_steps": 50,
+                            "style_name": "(No style)",
+                            "input_image": uploaded_file,
+                            "num_outputs": 1,
+                            "guidance_scale": 5,
+                            "negative_prompt": "realistic, photo-realistic, worst quality, greyscale, bad anatomy, bad hands, error, text",
+                            "style_strength_ratio": 35
+                        }
+                    )
 
                     if output and len(output) > 0:
                         # Extract the image URL from the output
