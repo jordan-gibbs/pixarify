@@ -79,25 +79,39 @@ if uploaded_file is not None:
 
                 try:
                     # Generate Pixar-style image using Replicate API
-                    output = rep_client.run(
-                        "adirik/t2i-adapter-sdxl-depth-midas:8a89b0ab59a050244a751b6475d91041a8582ba33692ae6fab65e0c51b700328",
-                        input={
-                            "image": uploaded_file,
-                            "prompt": f"a Pixar character, {description}, 2022 Pixar style",
-                            "scheduler": "K_EULER_ANCESTRAL",
-                            "num_samples": 1,
-                            "random_seed": 1001,
-                            "guidance_scale": 9,
-                            "negative_prompt": "graphic, deformed, mutated, ugly, disfigured, photorealistic, photo",
-                            "num_inference_steps": 100,
-                            "adapter_conditioning_scale": 0.66,
-                            "adapter_conditioning_factor": 1
-                        }
-                    )
+                    # output = rep_client.run(
+                    #     "adirik/t2i-adapter-sdxl-depth-midas:8a89b0ab59a050244a751b6475d91041a8582ba33692ae6fab65e0c51b700328",
+                    #     input={
+                    #         "image": uploaded_file,
+                    #         "prompt": f"a Pixar character, {description}, 2022 Pixar style",
+                    #         "scheduler": "K_EULER_ANCESTRAL",
+                    #         "num_samples": 1,
+                    #         "random_seed": 1001,
+                    #         "guidance_scale": 9,
+                    #         "negative_prompt": "graphic, deformed, mutated, ugly, disfigured, photorealistic, photo",
+                    #         "num_inference_steps": 100,
+                    #         "adapter_conditioning_scale": 0.66,
+                    #         "adapter_conditioning_factor": 1
+                    #     }
+                    # )
+
+                        output = rep_client.run(
+                            "tencentarc/photomaker-style:467d062309da518648ba89d226490e02b8ed09b5abc15026e54e31c5a8cd0769",
+                            input={
+                                "prompt": "A portrait of a {description} img, 3d CGI, art by Pixar, half-body, screenshot from animation",
+                                "num_steps": 50,
+                                "style_name": "(No style)",
+                                "input_image": uploaded_file,
+                                "num_outputs": 1,
+                                "guidance_scale": 5,
+                                "negative_prompt": "realistic, photo-realistic, worst quality, greyscale, bad anatomy, bad hands, error, text",
+                                "style_strength_ratio": 35
+                            }
+                        )
 
                     if output and len(output) > 0:
                         # Extract the image URL from the output
-                        pixarified_image_url = output[1]
+                        pixarified_image_url = output[0]
                         st.image(pixarified_image_url, caption='Pixarified Image')
 
                         # Try again button
