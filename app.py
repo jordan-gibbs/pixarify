@@ -26,7 +26,7 @@ def get_image_description(encoded_image, api_key):
                 "content": [
                     {
                         "type": "text",
-                        "text": "Describe this person in the image, their age, gender, hair color, facial expression, estimated race, ethnicity, and other characteristics, ie facial hair, glasses, piercings, clothing, and overall mood and setting of the picture. Here is an example output for you: young man, neutral face, light beard, glasses, black hair, asian, warehouse, dark\n Here is another example for you: young girl, anxious face, glasses, blonde hair, caucasian, city street, daytime\nDont be afraid to be quite detailed."
+                        "text": "Describe this person in the image, their age, gender, hair color, facial expression, estimated race, ethnicity, and other characteristics, ie facial hair, glasses, piercings, clothing, and overall mood and setting of the picture. Here is an example output for you: young man, neutral face, light beard, glasses, black hair, asian, warehouse, dark\n Here is another example for you: young girl, anxious face, glasses, blonde hair, caucasian, city street, daytime"
                     },
                     {
                         "type": "image_url",
@@ -98,12 +98,12 @@ if uploaded_file is not None:
                     output = rep_client.run(
                         "tencentarc/photomaker-style:467d062309da518648ba89d226490e02b8ed09b5abc15026e54e31c5a8cd0769",
                         input={
-                            "prompt": "A portrait of a {description} img, 3d CGI, art by Pixar, half-body, screenshot from animation",
+                            "prompt": "{description} img, 3d CGI, art by Pixar, half-body, screenshot from animation",
                             "num_steps": 50,
                             "style_name": "(No style)",
                             "input_image": uploaded_file,
                             "num_outputs": 1,
-                            "guidance_scale": 5,
+                            "guidance_scale": 7,
                             "negative_prompt": "realistic, photo-realistic, worst quality, greyscale, bad anatomy, bad hands, error, text",
                             "style_strength_ratio": 35
                         }
